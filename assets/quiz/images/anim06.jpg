@@ -1,0 +1,741 @@
+<!doctype html>
+<html manifest="offline.php?lang=fr/anim06.jpg">
+<head>
+	<style>
+		.screen { display: none; }
+		#loading { display: block; }
+	</style>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--<meta name="viewport" content="initial-scale=1.0">-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+	<meta charset="UTF-8">
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="origin-trial" content="AnitQ5OJL9NHb2pIJArLosU7MENeZHfc1GqtsXHhl9ScJPKda95ENN/6JcG0rlPx+c0lLb8StDYG8rXnO+QVnwIAAABdeyJvcmlnaW4iOiJodHRwczovL2dhbWVzLm1lbW9yeS1tb3RpdmF0aW9uLm9yZzo0NDMiLCJmZWF0dXJlIjoiQXBwQ2FjaGUiLCJleHBpcnkiOjE2MTc3NTM1OTl9">
+	<link rel="icon" href="assets/favicon.png" />
+	<link rel="apple-touch-icon" href="assets/icon.png" />
+	<link rel="stylesheet" href="memo.css?v=2024-03-26">
+	<link rel="stylesheet" href="home.css?v=2024-03-26">
+	<script src="utils.js?v=2024-03-26"></script>
+	<script src="tr.php?id=memo&ext=js&lang=fr/anim06.jpg&v=2024-03-26"></script>
+		<link rel="stylesheet" href="games/reconnaissance/style.css?v=2024-03-26">
+<script src="tr.php?id=reconnaissance&ext=js&lang=fr/anim06.jpg&v=2024-03-26"></script>
+<link rel="stylesheet" href="games/quiz/style.css?v=2024-03-26">
+<script src="tr.php?id=quiz&ext=js&lang=fr/anim06.jpg&v=2024-03-26"></script>
+<link rel="stylesheet" href="games/visages/style.css?v=2024-03-26">
+<script src="tr.php?id=visages&ext=js&lang=fr/anim06.jpg&v=2024-03-26"></script>
+<link rel="stylesheet" href="games/fleches/style.css?v=2024-03-26">
+<script src="tr.php?id=fleches&ext=js&lang=fr/anim06.jpg&v=2024-03-26"></script>
+<link rel="stylesheet" href="games/mains/style.css?v=2024-03-26">
+<script src="tr.php?id=mains&ext=js&lang=fr/anim06.jpg&v=2024-03-26"></script>
+<link rel="stylesheet" href="games/mariole/style.css?v=2024-03-26">
+<script src="tr.php?id=mariole&ext=js&lang=fr/anim06.jpg&v=2024-03-26"></script>
+<link rel="stylesheet" href="games/runner/style.css?v=2024-03-26">
+<script src="tr.php?id=runner&ext=js&lang=fr/anim06.jpg&v=2024-03-26"></script>
+<link rel="stylesheet" href="games/colors/style.css?v=2024-03-26">
+<script src="tr.php?id=colors&ext=js&lang=fr/anim06.jpg&v=2024-03-26"></script>
+<script>Memo.version='2024-03-26'; Memo.lang='fr/anim06.jpg'; fileCount=1029; fileProgress=0;</script>
+	<link rel="stylesheet" href="assets/nouislider.min.css">
+	<title>MeMo v2</title>
+</head>
+<body onLoad="Memo.init()"  >
+
+
+<div class="screen" id="loading">
+	<table class="layout">
+		<tr height="30%"><td><img class="start_logo" src="assets/logo.png" /></td></tr>
+		<tr height="40%"><td><h1>Chargement en cours...</h1></td></tr>
+		<tr height="30%"><td>
+			<div id="loading_errors"></div>
+			<div class="version">.</div>
+		</td></tr>
+	</table>
+</div>
+
+
+
+<div class="screen" id="error">
+	<table class="layout">
+		<tr height="30%"><td><img class="start_logo" src="assets/logo.png" /></td></tr>
+		<tr height="30%"><td><h1>Une erreur est survenue</h1></td></tr>
+		<tr height="20%"><td id="errorText"></td></tr>
+		<tr height="20%"><td><div class="version">.</div></td></tr>
+	</table>
+</div>
+
+
+
+<div class="screen" id="start">
+	<table class="layout">
+		<tr height="30%"><td colspan="2"><img class="start_logo" src="assets/logo.png" /><td></tr>
+		<tr height="60%">
+			<td width="50%" rowspan="2" valign="top">
+				<div class="textblock">
+					<h1>Bienvenue&nbsp;!</h1>
+					MeMo propose un ensemble d'exercices spécifiques pour entraîner votre mémoire et votre concentration, chez vous ou avec un professionnel de santé.
+				</div>
+				<div id="start_update" class="cacheTextNothing cacheTextDownload cacheTextReady"></div>
+			</td>
+			<td>
+				<table class="sublayout">
+					<tr>
+						<th>Identifiant&nbsp;: </th>
+						<td><input type="text" id="login_user" value="" autocomplete="off" autocorrect="off" autocapitalize="none" /></td>
+					</tr>
+					<tr>
+						<th>Mot de passe&nbsp;: </th>
+						<td><input type="password" id="login_pass" value="" autocomplete="off" autocorrect="off" autocapitalize="none" /></td>
+					</tr>
+					<tr><td colspan="2"><input type="button" value="Se connecter" onClick="Memo.login()" /></td></tr>
+				</table>
+				<p><a href="forgot.php">Mot de passe oublié&nbsp;?</a></p>
+			</td>
+		</tr>
+		<tr><td><input type="button" value="Créer un compte gratuit" onClick="Memo.show('signup')" /></td></tr>
+		<tr height="10%"><td colspan="2" style="text-align: left"><div class="version">.</div></td></tr>
+	</table>
+</div>
+
+
+
+<div class="screen" id="signup">
+	<input type="button" value="Retour à l'accueil" onClick="Memo.show('start')" id="signup_back_button" />
+	<table class="layout">
+		<tr>
+			<td width="50%" style="vertical-align:bottom"><h2>Créer un compte</h2></td>
+			<td><img src="assets/logo.png" /></td>
+		</tr>
+		<tr>
+			<td>
+				<table class="sublayout">
+					<tr>
+						<th>Nom&nbsp;:&nbsp;</th>
+						<td><input type="text" id="signup_lastname" oninput="removeClass(this,'error')" autocomplete="off" autocorrect="off" /></td>
+					</tr><tr>
+						<th>Prénom&nbsp;:&nbsp;</th>
+						<td><input type="text" id="signup_firstname" oninput="removeClass(this,'error')" autocomplete="off" autocorrect="off" />
+					</tr>
+				</table>
+			</td>
+			<td>
+				<div class="explain">En créant un compte professionnel, vous disposerez de fonctionnalités supplémentaires vous permettant de configurer vous-même les exercices.<br /><b>Ce type de compte est réservé aux thérapeutes.</b></div>
+				<input type="checkbox" id="signup_pro" onChange="get('signup_pro_details').style.display=(get('signup_pro').checked?'table':'none')"><label for="signup_pro">Créer un compte professionnel</label>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="sublayout">
+					<tr>
+						<th>Identifiant&nbsp;:&nbsp;</th>
+						<td><input type="text" id="signup_username" oninput="removeClass(this,'error')" autocomplete="off" autocorrect="off" autocapitalize="off" /></td>
+					</tr><tr>
+						<th>Mot de passe&nbsp;:&nbsp;</th>
+						<td><input type="password" id="signup_password" oninput="removeClass(this,'error')" autocomplete="off" autocorrect="off" autocapitalize="off" />
+					</tr><tr>
+						<th>Email&nbsp;:&nbsp;</th>
+						<td><input type="text" id="signup_email" class="scrollTo" autocomplete="off" autocorrect="off" autocapitalize="off" />
+					</tr><tr>
+						<td colspan="2" class="explain">L'email est facultatif mais est utilisé pour<br />réinitialiser votre mot de passe si vous le perdez</td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table class="sublayout" id="signup_pro_details">
+					<tr>
+						<th>Profession&nbsp;:&nbsp;</th>
+						<td><input type="text" id="signup_profession"></td>
+					</tr><tr>
+						<th>Lieux d'exercice&nbsp;:&nbsp;</th>
+						<td><input type="text" id="signup_workplace"></td>
+					</tr><tr>
+						<th>Ville&nbsp;:&nbsp;</th>
+						<td><input type="text" id="signup_city"></td>
+					</tr><tr>
+						<th>Pays&nbsp;:&nbsp;</th>
+						<td><input type="text" id="signup_country"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td><input type="button" value="Envoyer" onClick="Memo.register()" /></td>
+			<td class="explain">En vous enregistrant, vous acceptez que MeMo enregistre des données dans votre navigateur afin de fonctionner. (<a href="#" onclick="Memo.show('cookie')">En savoir plus</a>)</td>
+		</tr>
+	</table>
+</div>
+
+
+<div class="screen" id="cookie">
+	<table class="layout">
+		<tr><td><div class="textblock"><p>L'application est enregistrée dans le cache de votre navigateur afin de pouvoir être utilisée sans connexion Internet.<p>Un cookie stocke vos identifiants afin de vous reconnecter automatiquement lors de votre prochaine utilisation de l'application.<br />Vos paramètres de jeu ainsi que vos scores sont également enregistrés dans votre navigateur.<br />Ces données peuvent être effacées dans les options de votre navigateur.<p>Si vous êtes connecté à Internet, vos scores seront envoyés au serveur Memo afin de les sauvegarder et de pouvoir être récupérés sur un autre appareil.<br />Vous pourrez effacer votre compte à tout moment en consultant votre profil dans l'application.</div>
+		<tr><td><input type="button" value="Retour" onClick="Memo.show('signup')" />
+	</table>
+</div>
+
+
+
+<div class="screen" id="soutien">
+	<table class="layout">
+		<tr><td colspan="2"><h4>L'accès à MeMo est gratuit et nous souhaitons qu'il le reste&nbsp;!</h4><p>Pour pouvoir continuer, notre équipe a besoin de vos dons.</p><p class="soutien_highlight">Chaque don, petit ou grand, nous permet de continuer.</p>
+		<tr>
+			<td valign="top"><fieldset><legend>Faire un don par Internet</legend>
+				<a class="soutien_button" href="https://www.helloasso.com/don/associations/innovation-alzheimer" target="_blank" />Je soutiens MeMo</a>
+				</fieldset>
+			</td>
+			<td valign="top"><fieldset><legend>Envoyez un chèque à l'adresse suivante</legend>
+				Association Innovation Alzheimer<br />Institut Claude Pompidou<br />10 Rue Molière<br />06100 Nice – France
+				</fieldset>
+			</td>
+		</tr>
+		<tr><td colspan="2"><p id="soutien_note"><b>L'Association Innovation Alzheimer est reconnue d'intérêt général ce qui permet aux donateurs de bénéficier d'une réduction d’impôt.</b> <a href="http://www.impots.gouv.fr/portal/dgi/public/particuliers.impot?pageId=part_isf&sfid=530&espId=1&impot=ISF
+" target="_blank" />Plus de détails ici</a><br />Pour avoir plus de renseignements, vous pouvez nous contacter par mail : contact@innovation-alzheimer.fr</p></td></tr>
+		<tr><td colspan="2"><input type="button" value="Retour" onClick="Memo.show('home')" /></td></tr>
+	</table>
+</div>
+
+
+
+
+<div class="screen" id="account">
+	<table class="layout">
+		<tr height="1"><td><h2>Détails du compte</h2>
+		<tr><td>
+			<div id="accountText" class="textblock"></div>
+			<p><input type="button" id="accountFlushButton" value="Effacer les données locales" onClick="Memo.accountFlush()" />
+			<p><input type="button" id="accountDownloadButton" value="Télécharger les scores du serveur" onClick="Memo.getDataFromServer()" />
+		</td></tr>
+		<tr><td><input type="button" id="accountPatientsButton" value="Gérer les patients" onClick="Memo.goToPatientsList()" />
+		<tr height="1"><td><input type="button" value="Retour" onClick="Memo.show('home')" /></td></tr>
+	</table>
+</div>
+
+
+
+
+<div class="screen" id="patients">
+	<table class="layout">
+		<tr height="70%">
+			<td rowspan="2" width="50%">
+				<h3>Mes patients</h3>
+				<select id="patientsList" size="14" onChange="Memo.patientSelectFromList()">
+					<option value="">- Aucun -</option>
+				</select>
+			<td>
+				<h3>&nbsp;</h3>
+				<fieldset id="patientDetails">
+					<legend id="patientDetailsTitle"></legend>
+					<div id="patientDetailsText"></div>
+					<input type="button" id="patientUpdateButton" value="Mettre à jour les données" onClick="Memo.getDataFromServer(Memo.goToPatientsList)" />
+					<input type="button" id="patientLetsGoButton" value="Travailler avec ce profil" onClick="Memo.show('home')" />
+				</fieldset>
+		<tr>
+			<td>
+				<input type="button" id="patientDeleteButton" value="Supprimer de ma liste" onClick="Memo.patientRemove()" />
+				<input type="button" value="Ajouter un nouveau patient" onClick="Memo.show('patientAdd')" />
+	</table>
+</div>
+
+
+
+
+<div class="screen" id="patientAdd">
+	<table class="layout">
+		<tr><td>
+			<fieldset>
+				<legend>Ajouter un patient qui a déjà un compte</legend>
+				Identifiant : <input type="text" id="patientsAddUser" />
+				Mot de passe : <input type="password" id="patientsAddPass" />
+				<input type="button" style="display: inline" value="Ajouter" onClick="Memo.patientAdd()" />
+			</fieldset>
+		<tr><td>
+				<fieldset>
+					<legend>Créer un compte pour ce patient</legend>
+					<table class="sublayout">
+						<tr>
+							<th>Nom&nbsp;:&nbsp;</th>
+							<td><input type="text" id="signup2_lastname" oninput="removeClass(this,'error')" autocomplete="off" autocorrect="off" /></td>
+							<th>Prénom&nbsp;:&nbsp;</th>
+							<td><input type="text" id="signup2_firstname" oninput="removeClass(this,'error')" autocomplete="off" autocorrect="off" />
+						</tr><tr>
+							<th>Identifiant&nbsp;:&nbsp;</th>
+							<td><input type="text" id="signup2_username" oninput="removeClass(this,'error')" autocomplete="off" autocorrect="off" autocapitalize="off" /></td>
+							<th>Mot de passe&nbsp;:&nbsp;</th>
+							<td><input type="password" id="signup2_password" oninput="removeClass(this,'error')" autocomplete="off" autocorrect="off" autocapitalize="off" />
+						</tr><tr>
+							<th>Email&nbsp;:&nbsp;</th>
+							<td><input type="text" id="signup2_email" class="scrollTo" autocomplete="off" autocorrect="off" autocapitalize="off" />
+							<td colspan="2"><input type="button" value="Créer et ajouter" onClick="Memo.register(true)" /></td>
+						</tr>
+					</table>
+				</fieldset>
+		<tr height="1"><td colspan="2"><input type="button" value="Retour" onClick="Memo.show('patients')" /></td></tr>
+	</table>
+</div>
+
+
+
+
+<div class="screen" id="welcome">
+	<table class="layout">
+		<tr><td colspan="2">
+				<div class="home_icon" onClick="Memo.logout()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAA/FBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADzfFO9AAAAU3RSTlMAAQIDBAUICgsMDQ4QExQYHB0eKC81OEBFRktMUVZcXl9hZGhpb3F5e3x+f4CCg4WGiImLjI6PkZKUlZugo6utsL7P0dXa3N7g4uTm6Onr8fn7/XX94cYAAAF6SURBVFjD3dfXVsJAEAbgjYAkRkWx99gLiC12BcWGWPF//3fxIoEDySTZ8F/p3E7mO5uyMxul/k2MLlUffxCIDe3ykSqk0AZmAQpYBwdMgwPMFgm40ACyi2uDUQtoX10q2lYgcp2r6sBLXgbm/PqpuFXmgUjhxqsvx96mBQBoiELdA8Y1ADRMIfft5SwdAK+C4KdMLUAS0gGCkBIIC2kBNE0SQNMigYDQB9ArSEBucqY3nMAuexuKBQpfSIouQQAegBRCGBgA0ghhIKMF4N0mgbbQP+ALBOAJDIAPiwRQY4FPFlgmgW3yIe6Qr3GX/JD2yE+5FL2dWzr15Zh+sKVRvx/XUIyV56T6CtdUcUB25UOyrR+Rg+WYHG0n5HB1yfF+Gsq10hxxcBbO+WNoTAs4F3K3XVs7CbgwhNyCj08kA5dSvbLbt+fY2UwgOgU5ALgyZP1a57C9CbgR9WpYB1B2zGuaJ/8XlKqwgFplAVW8JwGlCs7dEwX84fgFD38gO08qg6gAAAAASUVORK5CYII=" /><br />Me déconnecter</div>
+				<img src="assets/logo.png" class="start_logo" />
+		<tr>
+			<td width="50%">
+				<div id="welcome_text" class="textblock cacheTextReady cacheTextDownload">
+					<p id="welcome_text_update">					<hr />
+					Si vous rencontrez des problèmes ou si vous avez des questions, écrivez nous à contact@memory-motivation.org
+				</div>
+				<div class="cacheTextNothing"></div>
+			<td>
+				<div class="home_avatar">
+					<img src="assets/avatar_welcome.png" id="home_avatar_img" />
+					<div id="welcome_name"></div>
+				</div>
+		<tr><td colspan="2"><input type="button" value="Commencer" onClick="Memo.open()" id="welcome_start_button" />
+	</table>
+	<div class="sending" onClick="Memo.maybeShowAccount()">&#9679;</div>
+	<div class="version">version</div>
+</div>
+
+
+
+<div class="screen" id="home">
+	<table class="layout">
+		<tr height="15%">
+			<td class="cacheTextReady"><img id="home_logo" src="assets/logo.png" onclick="Memo.show('welcome')" /></td>
+			<td colspan="2">
+				<div class="home_icon" onClick="Memo.logout()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAA/FBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADzfFO9AAAAU3RSTlMAAQIDBAUICgsMDQ4QExQYHB0eKC81OEBFRktMUVZcXl9hZGhpb3F5e3x+f4CCg4WGiImLjI6PkZKUlZugo6utsL7P0dXa3N7g4uTm6Onr8fn7/XX94cYAAAF6SURBVFjD3dfXVsJAEAbgjYAkRkWx99gLiC12BcWGWPF//3fxIoEDySTZ8F/p3E7mO5uyMxul/k2MLlUffxCIDe3ykSqk0AZmAQpYBwdMgwPMFgm40ACyi2uDUQtoX10q2lYgcp2r6sBLXgbm/PqpuFXmgUjhxqsvx96mBQBoiELdA8Y1ADRMIfft5SwdAK+C4KdMLUAS0gGCkBIIC2kBNE0SQNMigYDQB9ArSEBucqY3nMAuexuKBQpfSIouQQAegBRCGBgA0ghhIKMF4N0mgbbQP+ALBOAJDIAPiwRQY4FPFlgmgW3yIe6Qr3GX/JD2yE+5FL2dWzr15Zh+sKVRvx/XUIyV56T6CtdUcUB25UOyrR+Rg+WYHG0n5HB1yfF+Gsq10hxxcBbO+WNoTAs4F3K3XVs7CbgwhNyCj08kA5dSvbLbt+fY2UwgOgU5ALgyZP1a57C9CbgR9WpYB1B2zGuaJ/8XlKqwgFplAVW8JwGlCs7dEwX84fgFD38gO08qg6gAAAAASUVORK5CYII=" /><br />Me déconnecter</div>
+				<div class="home_icon" onClick="Memo.showAccount()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAABhlBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADza1n/AAAAgXRSTlMAAQIDBAUGCAoLDA0ODxARFBUaGx0eHyAjJCUmJyorLi8wMjM0ODk6Oz0+P0FDREVJSktMTU5QVFZXWFlbX2JjZ2tsb3FzdXh5fH6AgoOFhoiJjo+RkpWXmJqbnaKlpqqrr7e5vL7AwcfIyszOz9HV2drc3uDi5ujp6+3z9ff5+/0jgBAbAAAB60lEQVQYGZ3Bi0NLYRwG4PdcsoTaxIxVcskluYeQCpVyX0ZSoua+YZEwa/b+57azzc7azved83seKISHk+lcYSM1OxBCcMZQlnWvoggolmWjxRCCmGCTXAy+GUm2MgC/EmztIPwZoYdCJ/wI01PGgA9v6O0i9GJU+G1C6wVVDkPHotJz6OyjUh4656nWDo3bVOuGxn2qHYDGA6rFoTFFtT3QuES1DmjEqfTXgEYblZahtUKVk9Dqp8KmDb2v9DYGH2L09MOEH3foJQpfjBW2NgyfrFW2cgO+mfNsUjwDve2nJp8+iaDkdJ6N0hGUnFh6NNFrw0PPezqmTADbbhVYtzZoANiVouPxDrRgL7FmPY4S89DsZ5bkV8e7UWKMFllzBU1C3+jyrAMVlm2iIv6FLnPYwkqzUTIKF+vYBzaaRKMEm/x6eLyzzYAZ2n35ZZFNeuEWZ2AbFlw+MbjrqOujwB8L/72mxCBq2inyDjVDlAmhapEyR1G1SZkZVOykUAYV/ZQy4bhKqS44EpTqgyNFqbNw/KTUGBwUm4aDYvdQZlBsDmUWxRZQZlJsHg6KzcCRpdQ1OKYptReOHgrlTVRkKDOKqv0U+W6hZoQC+S7UXWBga2G4RZYZSOGmjS06zy18zNGH4vrbu0dsVP0D+ZAIn0mTyCMAAAAASUVORK5CYII=" /><br />Mon compte</div>
+				<div class="home_icon" onClick="Memo.show('soutien')"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAABYlBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABE0JlXAAAAdXRSTlMAAQIDBAUGBwgJCgsNDg8QEhMUFRcYGRocHR4gISMmJygqLzEzNjc4P0BCQ0ZHSUtOT1BRUlRVWFxhYmRna2xveHl+f4CChYiLjJGUlZiam52eoKKlr7S1ur7AwcPFzs/R09XX2drc4OLo6evt7/Hz9ff5+/2TzupaAAAB3ElEQVQYGa3B6V8SQQAG4HdglSMCEcgt6bIyO+w+NPOoNI/KLEvtIFwt5dhMhPf/79vuQszOzP56HugQ+euzbyuHR2331/ba9PiQgIn4tTctdmtPQlvuVZv/cqAps86+FqElNkeJK9Axsk+ZBDTco1QVamKZcs+hJD4wxHmoiE2GiUNlhT1+zF/Np634YHZ0YuHLfag8YJeT2TyMjLDLywTMiD0G1M/B1AwDdgZhKtWh71scxpbo+2nBWJIBRZibpm8KEdTpacRgbpS+2zAiPlPH3ilInKGeh5CwqecyJGzqSUPCppYjyNjUsgGZErU8gox4d1irdehp1PrZSSLUAT1DiMKl5zSiaNGTQRR/6MkiCpeeYRgSn6jUWYFciToSkLKp4RhyNjVsQs6mhieQs6mhDLkiNQwgxNKu4zi/6as7PapPoTRO3yoisBiQQwTr9H1EBGUG3EQEVfpO8jA3xoBmFua+M6BegrECgzp3YWyOXbZLMCS+stvGRYGAtAWFVIM93NVJO5scSOTKtxYP2LSgUGgx1CWonD1mmGdQKroMsQW1dIVyHQG12ALlhqGjvE+ZCWgRd1z29xqaYjcc9vMe+gozu+zReJGCkeSFx8tbtTbJZmVtaiyD/+kvtOeYSc6qSsgAAAAASUVORK5CYII=" /><br />Soutenir MeMo</div>
+				<div id="home_connected">.</div>
+			</td>
+		</tr>
+		<tr>
+			<td id="home_col1" width="25%">
+				<table class="layout">
+					<tr><td valign="top">
+						<!--
+						<input type="radio" name="home_menu" class="menu notouch" id="home_menu_program" />
+						<label for="home_menu_program" class="notouch" onClick="Memo.menu(this)">EXERCICES RECOMMANDÉS</label>
+						-->
+					</td></tr>
+					<tr><td valign="bottom">
+						<input type="radio" name="home_menu" class="menu notouch" id="home_menu_memory" />
+						<label for="home_menu_memory" class="notouch" onClick="Memo.menu(this)">MÉMOIRE</label>
+						<input type="radio" name="home_menu" class="menu notouch" id="home_menu_executive" />
+						<label for="home_menu_executive" class="notouch" onClick="Memo.menu(this)">ADAPTABILITÉ</label>
+						<input type="radio" name="home_menu" class="menu notouch" id="home_menu_attention" />
+						<label for="home_menu_attention" class="notouch" onClick="Memo.menu(this)">ATTENTION</label>
+					</td></tr>
+				</table>
+			</td>
+			<td id="home_col2" width="35%" valign="bottom">
+				<div class="home_menu_div" id="home_menu_memory_div"><input type="radio" name="home_game" class="menu" id="home_game_reconnaissance" /><label for="home_game_reconnaissance" class="notouch" onClick="Memo.menu(this)"><img src="games/reconnaissance/assets/vignette.png">Reconnaissance</label><input type="radio" name="home_game" class="menu" id="home_game_quiz" /><label for="home_game_quiz" class="notouch" onClick="Memo.menu(this)"><img src="games/quiz/assets/vignette.png">Quiz MeMo</label><input type="radio" name="home_game" class="menu" id="home_game_visages" /><label for="home_game_visages" class="notouch" onClick="Memo.menu(this)"><img src="games/visages/assets/vignette.png">Visages</label></div>
+<div class="home_menu_div" id="home_menu_executive_div"><input type="radio" name="home_game" class="menu" id="home_game_fleches" /><label for="home_game_fleches" class="notouch" onClick="Memo.menu(this)"><img src="games/fleches/assets/vignette.png">Flèches</label><input type="radio" name="home_game" class="menu" id="home_game_mains" /><label for="home_game_mains" class="notouch" onClick="Memo.menu(this)"><img src="games/mains/assets/vignette.png">Mains</label><input type="radio" name="home_game" class="menu" id="home_game_mariole" /><label for="home_game_mariole" class="notouch" onClick="Memo.menu(this)"><img src="games/mariole/assets/vignette.png">Mariole cartes</label></div>
+<div class="home_menu_div" id="home_menu_attention_div"><input type="radio" name="home_game" class="menu" id="home_game_runner" /><label for="home_game_runner" class="notouch" onClick="Memo.menu(this)"><img src="games/runner/assets/vignette.png">Saute carré</label><input type="radio" name="home_game" class="menu" id="home_game_colors" /><label for="home_game_colors" class="notouch" onClick="Memo.menu(this)"><img src="games/colors/assets/vignette.png">MeMo Color</label></div>
+			</td>
+			<td id="home_col3" width="40%">
+				<div class="home_avatar" id="home_menu_avatar">
+					<img src="assets/avatar_welcome.png" />
+					<div id="home_menu_avatar_col1">Choisissez une catégorie dans le menu de gauche</div>
+					<div id="home_menu_avatar_col2" style="display:none;">Choisissez un exercice&nbsp;!</div>
+				</div>
+				<div class="home_game_div" id="home_game_reconnaissance_div" class="home_preview"><img class="home_screenshot" src="games/reconnaissance/assets/screenshot.png" /><h3>Reconnaissance</h3><p>Collectionnez les images</p><p class="working">Exercice de mémoire visuelle</p><p><input type="button" value="Commencer" onClick="Memo.loadGame('reconnaissance')" /></p><div class="followup_button" onClick="Memo.goToFollowup('reconnaissance')"><img src="assets/icon_chart.png" /></div></div>
+<div class="home_game_div" id="home_game_quiz_div" class="home_preview"><img class="home_screenshot" src="games/quiz/assets/screenshot.png" /><h3>Quiz MeMo</h3><p>Retenez les réponses dans l'ordre</p><p class="working">Exercice faisant travailler la boucle phonologique en mémoire de travail</p><p><input type="button" value="Commencer" onClick="Memo.loadGame('quiz')" /></p><div class="followup_button" onClick="Memo.goToFollowup('quiz')"><img src="assets/icon_chart.png" /></div></div>
+<div class="home_game_div" id="home_game_visages_div" class="home_preview"><img class="home_screenshot" src="games/visages/assets/screenshot.png" /><h3>Visages</h3><p>Mémorisez les visages et les prénoms</p><p class="working">Exercice de mémoire associative</p><p><input type="button" value="Commencer" onClick="Memo.loadGame('visages')" /></p><div class="followup_button" onClick="Memo.goToFollowup('visages')"><img src="assets/icon_chart.png" /></div></div>
+<div class="home_game_div" id="home_game_fleches_div" class="home_preview"><img class="home_screenshot" src="games/fleches/assets/screenshot.png" /><h3>Flèches</h3><p>Choisissez le bon côté&nbsp;!</p><p class="working">Exercice de rapidité, contrôle inhibiteur et flexibilité mentale</p><p><input type="button" value="Commencer" onClick="Memo.loadGame('fleches')" /></p><div class="followup_button" onClick="Memo.goToFollowup('fleches')"><img src="assets/icon_chart.png" /></div></div>
+<div class="home_game_div" id="home_game_mains_div" class="home_preview"><img class="home_screenshot" src="games/mains/assets/screenshot.png" /><h3>Mains</h3><p>Main gauche ou droite&nbsp;?</p><p class="working">Exercice de rapidité, flexibilité mentale et rotation mentale</p><p><input type="button" value="Commencer" onClick="Memo.loadGame('mains')" /></p><div class="followup_button" onClick="Memo.goToFollowup('mains')"><img src="assets/icon_chart.png" /></div></div>
+<div class="home_game_div" id="home_game_mariole_div" class="home_preview"><img class="home_screenshot" src="games/mariole/assets/screenshot.png" /><h3>Mariole cartes</h3><p>Mémorisez les cartes&nbsp;!</p><p class="working">Exercice de mise à jour en mémoire de travail</p><p><input type="button" value="Commencer" onClick="Memo.loadGame('mariole')" /></p><div class="followup_button" onClick="Memo.goToFollowup('mariole')"><img src="assets/icon_chart.png" /></div></div>
+<div class="home_game_div" id="home_game_runner_div" class="home_preview"><img class="home_screenshot" src="games/runner/assets/screenshot.png" /><h3>Saute carré</h3><p>Évitez les obstacles&nbsp;!</p><p class="working">Exercice de rapidité, d'anticipation et de contrôle inhibiteur</p><p><input type="button" value="Commencer" onClick="Memo.loadGame('runner')" /></p><div class="followup_button" onClick="Memo.goToFollowup('runner')"><img src="assets/icon_chart.png" /></div></div>
+<div class="home_game_div" id="home_game_colors_div" class="home_preview"><img class="home_screenshot" src="games/colors/assets/screenshot.png" /><h3>MeMo Color</h3><p>Empilez les motifs&nbsp;!</p><p class="working">Exercice de planification</p><p><input type="button" value="Commencer" onClick="Memo.loadGame('colors')" /></p><div class="followup_button" onClick="Memo.goToFollowup('colors')"><img src="assets/icon_chart.png" /></div></div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+<!-- POUR LE PROTOCOLE -->
+
+<div class="screen" id="proto">
+	<div class="sending" onClick="Memo.maybeShowAccount()">&#9679;</div>
+	<table class="layout">
+		<tr><td><h1>Programme du jour</h1>
+		<tr><td>
+			<table class="sublayout" id="proto_todo">
+			<tr id="proto_game_reconnaissance"><td><img src="games/reconnaissance/assets/screenshot.png" /><td><h3>Reconnaissance</h3><input type="button" value="Commencer" onClick="Memo.loadGame('reconnaissance')" /></tr>
+<tr id="proto_game_quiz"><td><img src="games/quiz/assets/screenshot.png" /><td><h3>Quiz MeMo</h3><input type="button" value="Commencer" onClick="Memo.loadGame('quiz')" /></tr>
+<tr id="proto_game_visages"><td><img src="games/visages/assets/screenshot.png" /><td><h3>Visages</h3><input type="button" value="Commencer" onClick="Memo.loadGame('visages')" /></tr>
+<tr id="proto_game_fleches"><td><img src="games/fleches/assets/screenshot.png" /><td><h3>Flèches</h3><input type="button" value="Commencer" onClick="Memo.loadGame('fleches')" /></tr>
+<tr id="proto_game_mains"><td><img src="games/mains/assets/screenshot.png" /><td><h3>Mains</h3><input type="button" value="Commencer" onClick="Memo.loadGame('mains')" /></tr>
+<tr id="proto_game_mariole"><td><img src="games/mariole/assets/screenshot.png" /><td><h3>Mariole cartes</h3><input type="button" value="Commencer" onClick="Memo.loadGame('mariole')" /></tr>
+<tr id="proto_game_runner"><td><img src="games/runner/assets/screenshot.png" /><td><h3>Saute carré</h3><input type="button" value="Commencer" onClick="Memo.loadGame('runner')" /></tr>
+<tr id="proto_game_colors"><td><img src="games/colors/assets/screenshot.png" /><td><h3>MeMo Color</h3><input type="button" value="Commencer" onClick="Memo.loadGame('colors')" /></tr>
+				<tr id="proto_game_finished"><td>
+					<h2>Vous avez réalisé les exercices d'aujourd'hui.</h2>
+					<p>Vous pouvez maintenant continuer à faire des exercices libres</p>
+					<p><input type="button" value="Accéder aux exercices" onclick="Memo.proto.getFree()" /></p>
+				<tr id="proto_week_finished"><td>
+					<h2>Vous avez effectué suffisement d'entraînement cette semaine.</h2>
+					<p>Vous pouvez maintenant continuer à faire des exercices libres</p>
+					<p><input type="button" value="Accéder aux exercices" onclick="Memo.proto.getFree()" /></p>
+			</table>
+		<tr><td><div id="proto_week_num"></div><table class="sublayout"><tr id="proto_week"></table>
+		<tr><td><div>Vos exercices d'aujourd'hui</div><table class="sublayout"><tr id="proto_games"></table>
+	</table>
+</div>
+
+
+
+<div class="screen" id="satisfaction_intro">
+	<table class="layout">
+		<tr><td><h1>Questionaire de satisfaction</h1>
+		<tr><td><i>Nous aimerions avoir votre avis sur MeMo !</i>
+		<tr><td><p>Merci de répondre à ces quelques questions.
+		<tr><td><input type="button" value="Commencer" onClick="Memo.show('satisfaction1')" />
+	</table>
+</div>
+
+
+<div class="screen" id="satisfaction1">
+	<table class="layout">
+		<tr height="1"><td colspan="5"><i>Nous aimerions avoir votre avis sur MeMo !</i>
+		<tr><td colspan="5">
+			<h2 id="satisfaction_question1">Je trouve que l'utilisation de MeMo est facile</h2>
+			<h2 id="satisfaction_question2">J'apprécie faire les exercices proposés par MeMo</h2>
+			<h2 id="satisfaction_question3">Je pense que ces exercices peuvent améliorer ma mémoire et ma concentration</h2>
+		<tr height="1"><td colspan="5"><i>Répondez en cliquant sur une des cases ci-dessous.</i>
+		<tr height="1" style="font-size: 120%; font-weight: bold;">
+			<td colspan="2" style="text-align: left; padding-left: 1em;">Pas du tout d'accord
+			<td>
+			<td colspan="2" style="text-align: right; padding-right: 1em;">Tout à fait d'accord
+		<tr class="satisfaction_answers" height="30%">
+			<td width="20%"><input type="button" value="1" onClick="Memo.proto.answer(1)" style="background-color:#f55" />
+			<td width="20%"><input type="button" value="2" onClick="Memo.proto.answer(2)" style="background-color:#d85" />
+			<td width="20%"><input type="button" value="3" onClick="Memo.proto.answer(3)" style="background-color:#bb5" />
+			<td width="20%"><input type="button" value="4" onClick="Memo.proto.answer(4)" style="background-color:#8d5" />
+			<td width="20%"><input type="button" value="5" onClick="Memo.proto.answer(5)" style="background-color:#5f5" />
+	</table>
+</div>
+
+
+<div class="screen" id="satisfaction2">
+	<table class="layout">
+		<tr height="1"><td colspan="5"><i>Veuillez nous indiquer votre intérêt pour chaque exercice</i>
+		<tr><td><td><img id="satisfaction_game_pic" />
+			<td colspan="2"><h2>J'apprécie l'exercice <br />"<span id="satisfaction_game_name"></span>"</h2>
+			<td>
+		<tr height="1"><td colspan="5"><i>Répondez en cliquant sur une des cases ci-dessous.</i>
+		<tr height="1" style="font-size: 120%; font-weight: bold;">
+			<td colspan="2" style="text-align: left; padding-left: 1em;">Pas du tout d'accord
+			<td>
+			<td colspan="2" style="text-align: right; padding-right: 1em;">Tout à fait d'accord
+		<tr class="satisfaction_answers" height="30%">
+			<td width="20%"><input type="button" value="1" onClick="Memo.proto.answer(1)" style="background-color:#f55" />
+			<td width="20%"><input type="button" value="2" onClick="Memo.proto.answer(2)" style="background-color:#d85" />
+			<td width="20%"><input type="button" value="3" onClick="Memo.proto.answer(3)" style="background-color:#bb5" />
+			<td width="20%"><input type="button" value="4" onClick="Memo.proto.answer(4)" style="background-color:#8d5" />
+			<td width="20%"><input type="button" value="5" onClick="Memo.proto.answer(5)" style="background-color:#5f5" />
+	</table>
+</div>
+
+
+<div class="screen" id="game">
+	<div id="topbar">
+		<div onClick="Memo.quitMaybe()">
+			<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAABCFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzxr8JAAAAV3RSTlMAAQIDBAUGBwoLEBESFRYZGhwdHiAnKCkqKyw1Nj1AQkRGT1FSVFVWV2Zna29xc3V4eXuDhYaIiYuMmJudoqirr7S1t7m8vsrM1dfa3N7k6+3v8/X3+/2ABdA1AAABvUlEQVRYw+2XWVOCUBiG35NShu2rbZZt2r6X7WV7kmWY7///J10I+GGIh+mmmXiuDni+R3kGhwGI+fskfjWd3LNp7ya94606SZL1Tb35vjeS5Fufe8KZJ+ta89M1Z3st45yhh858obmdK9EF6oSSQxVR0H1PP7dGJIGTj+SZuyibEQRePnsCk7a7HtcWFOS3wrTcw0U9QTPfrQEAMEr8Qci84eU7UEDvZS+gDiMImvmWAIxVWR0DsKwtmBL5gBxJMgc0U3YQ5GU+te8c7CuZMkSgjmW+5I23/SbZmjI4353MZ5bF/rLZkrJzvoz/ou2MP2VovkkZwyPvSznRPp9lAqr489bhqQLSlvyVbfP1PDCIxx6ZsvEHD8zXX2EwlQGZsmS0yTfzxXZ8zcqUVtqZz/jyrTGMdZmyNg0AWJX5us4ZzkWXTFkAsC2vKfXETjynZMod4EVUHXlnZz5GRcpXYLjxtFgGME89FgCsNJajAObcfDvUZVc593oWALBBywRwRX2uAaQtuo/IwYT/qaEBACSG/LdzZEErsSBAkPU+ysaCWPCfBHYEwWeQoBhBcBT4dlG0NQX2ye/eY2L+Ht/MHGjz92BnyAAAAABJRU5ErkJggg==" />
+			Accueil		</div>
+		<div id="topbar_text"></div>
+		<div id="topbar_reset" onClick="Memo.abortMaybe()">
+			<span id="topbar_resetText">Recommencer</span>
+			<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAAHlBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC3KG9qAAAACXRSTlMACww4QLri5ObypuufAAABFklEQVRIx53WPRKCMBAF4BVzADtbOlpbu7S5gDMewMJSOs4hiu+2FphAskvejFZhhY8I+6OIiOwuJ1Gf/e2Q1h1GfUJAH5fNAPjyewdMbQKgiQBEohkARTggER2giQBEYgYKws2xqU1AQYRfsF+AjHAxNrVyjOs1EVLwIde0Xgi3xF5yhyYWAG85QxErAM/saFQAvDoUdYki1BVFQN+ziAS96yxkbDonDCAnDCAnLGCDGEXqhLcSZAMwCW8l6SZgEN4qlAqgCG8VaxUoCP/PCewWdJPsZ9IHxR41fVnsddOEYSlHk5alPS0cVnq0eFn50wbCWhBtYrQNkkb64a2YNnM6DuhA4SOJDjU+Fulg5aOZDvfq34Mv7Vijezk7yjgAAAAASUVORK5CYII=" />
+		</div>
+	</div>
+	<div id="parameters" class="gameScreen">
+		<table class="layout">
+			<tr><td id="parameters_div"></td></tr>
+			<tr height="1"><td>
+				<input type="button" value="Valider" onClick="Memo.validParameters()" />
+			</td></tr>
+		</table>
+	</div>
+	<div id="instructions" class="gameScreen">
+		<table class="layout">
+			<tr>
+				<td valign="middle">
+					<table class="sublayout" id="instructions_bloc">
+						<tr><td><div id="instructions_main"></div></td></tr>
+						<tr><td><table id="instructions_examples"></table></td></tr>
+					</table>
+				</td>
+				<td width="20%"><img src="assets/avatar_think.png" id="instructions_avatar" /></td>
+			</tr>
+			<tr height="1"><td colspan="2">
+				<input type="button" value="Commencer l'exercice" onClick="t().start()" />
+			</td></tr>
+		</table>
+	</div>
+	<div id="results" class="gameScreen">
+		<table class="layout">
+			<tr><td colspan="2" id="results_score">
+				Vous avez obtenu un score de : <span id="results_points"></span> points			</td></tr>
+			<tr>
+				<td><div id="results_details">
+					<h4>Détails du score</h4>
+					<div id="results_detailsSuccess"></div>
+					<div id="results_detailsText"></div>
+				</div></td>
+				<td><div id="results_graph">graph</div></td>
+			</tr>
+			<tr><td colspan="2"><div id="results_message"></div></td></tr>
+			<tr height="1"><td colspan="2">
+				<div id="results_buttons_normal">
+					<input type="button" value="Continuer" onClick="Memo.startGame()" />
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+					<input type="button" value="Changer d'exercice" onClick="Memo.quit()" />
+				</div>
+				<div id="results_buttons_proto" style="display: none">
+					<input type="button" value="Continuer" onClick="Memo.proto.continue()" />
+				</div>
+			</td></tr>
+		</table>
+		<div id="results_avatar"></div>
+	</div>
+	<div class="gameScreen" id="reconnaissance_game">
+	<table class="layout">
+	<tr>
+		<td rowspan="3"><div id="reconnaissance_card_place"><div id="reconnaissance_card_label">&nbsp;</div></div></td>
+		<td class="reconnaissance_destination" id="reconnaissance_cat">&nbsp;</td>
+	</tr>
+	<tr><td>&nbsp;</td></tr>
+	<tr><td class="reconnaissance_destination" id="reconnaissance_trash">&nbsp;</td></tr>
+	</table>
+</div>
+<div class="gameScreen" id="quiz_question">
+	<table class="layout">
+		<tr><td id="quiz_rText">&nbsp;</td></tr>
+		<tr><td id="quiz_rline">
+			<div class="quiz_r" id="quiz_r1" onClick="t().quickanswer(this)">&nbsp;</div>
+			<div class="quiz_r" id="quiz_r2" onClick="t().quickanswer(this)">&nbsp;</div>
+			<div class="quiz_r" id="quiz_r3" onClick="t().quickanswer(this)">&nbsp;</div>
+			<div class="quiz_r" id="quiz_r4" onClick="t().quickanswer(this)">&nbsp;</div>
+		</td></tr>
+		<tr><td>
+			<div id="quiz_please">Cliquez sur la réponse</div>
+			<input id="quiz_valid" type="button" value="Valider" onClick="t().valid()" />
+			<input id="quiz_next" type="button" value="Continuer" onClick="t().next()" />
+		</td></tr>
+	</table>
+</div>
+
+
+<div class="gameScreen" id="quiz_instructions2">
+	<table class="layout">
+		<tr><td><h2>Maintenant il faut rappeler dans l'ordre les réponses aux questions que vous venez de voir.</h2></td></tr>
+		<tr><td><input type="button" value="Continuer" onclick="t().showAnswersTable()" /></td></tr>
+	</table>
+</div>
+
+
+<div class="gameScreen" id="quiz_answer">
+	<table class="layout" id="quiz_answersTable"></table>
+	<div id="quiz_answersNum"></div>
+</div>
+
+
+<div class="gameScreen" id="quiz_recap">
+	<table class="layout">
+		<tr height="43%"><td id="quiz_recapTable1"></td></tr>
+		<tr height="43%"><td id="quiz_recapTable2"></td></tr>
+		<tr height="14%"><td><input type="button" value="Continuer" onClick="t().end()" id="quiz_results_button" /></td></tr>
+	</table>
+	<div id="quiz_recapNum1"></div>
+	<div id="quiz_recapNum2"></div>
+</div><div class="gameScreen" id="visages_game0">
+	<table class="layout">
+		<tr><td><h2>Mémorisez bien le prénom de ces personnes…</h2></td></tr>
+		<tr><td id="visages_memorisation"></td></tr>
+		<tr><td><input type="button" value="Continuer" onclick="t().preparePart1()" /></td></tr>
+	</table>
+</div>
+
+
+<div class="gameScreen" id="visages_game1">
+	<table class="layout">
+		<tr height="1"><td><h2 id="visages_part1_instructions"></h2></td></tr>
+		<tr><td id="visages_part1"></td></tr>
+	</table>
+	<div id="visages_bulle1"></div>
+</div>
+
+
+
+<div class="gameScreen" id="visages_game2">
+	<table class="layout">
+		<tr height="1"><td><h3>Placez les prénoms corrects sous chaque photo</h3></td></tr>
+		<tr><td id="visages_part2_faces"></td></tr>
+		<tr><td id="visages_part2_whatdo">&nbsp;</td></tr>
+		<tr><td id="visages_part2_names"></td></tr>
+		<tr height="1"><td><input type="button" id="visages_part2valid" value="Valider" onClick="t().part2valid()" /></td></tr>
+	</table>
+</div>
+
+
+
+<div class="gameScreen" id="visages_summary">
+	<table class="layout">
+		<tr><td><h2>Exercice terminé</h2></td></tr>
+		<tr><td id="visages_summary_text"></td></tr>
+		<tr><td>
+			<input type="button" value="Continuer" onclick="t().end()" />
+		</td></tr>
+	</table>
+</div>
+<div class="gameScreen" id="fleches_game">
+	<table class="layout">
+		<tr height="30%"><td colspan="3" id="fleches_tutorial">&nbsp;</td></tr>
+		<tr height="40%">
+			<td width="30%" id="fleches_gauche">&nbsp;</td>
+			<td width="40%" id="fleches_middle">&nbsp;</td>
+			<td width="30%" id="fleches_droite">&nbsp;</td>
+		</tr>
+		<tr height="30%">
+			<td><input type="button" class="fleches_round" id="fleches_leftbutton" onclick="t().answer('gauche')" /></td>
+			<td>&nbsp;</td>
+			<td><input type="button" class="fleches_round" id="fleches_rightbutton" onclick="t().answer('droite')" /></td>
+		</tr>
+	</table>
+</div><div class="gameScreen" id="mains_game">
+	<table class="layout">
+		<tr height="30%"><td colspan="3" id="mains_tutorial">&nbsp;</td></tr>
+		<tr height="40%">
+			<td colspan="3" id="mains_img">&nbsp;</td>
+		</tr>
+		<tr height="30%">
+			<td width="20%"><input type="button" class="mains_round" id="mains_leftbutton" onclick="t().answer('gauche')" /></td>
+			<td>&nbsp;</td>
+			<td width="20%"><input type="button" class="mains_round" id="mains_rightbutton" onclick="t().answer('droite')" /></td>
+		</tr>
+	</table>
+</div><div class="gameScreen" id="mariole_game">
+	<table class="layout">
+		<tr height="40%"><td>
+			<div id="mariole_fakecard"></div>
+			<div id="mariole_card"></div>
+			<div id="mariole_flipcard_stack">
+				<div id="mariole_flipcard">
+					<div id="mariole_flipcard_back"></div>
+					<div id="mariole_flipcard_front"></div>
+				</div>
+			</div>
+		</td></tr>
+		<tr height="10%"><td id="mariole_game_ask">
+		</td></tr>
+		<tr><td>
+			<input type="button" value="Carte suivante" onClick="t().update(true)" id="mariole_answer_next" />
+			<table class="sublayout" id="mariole_answer_color">
+				<tr>
+					<td><input type="button" style="background-color: black" onclick="t().answer('color','black')"></td>
+					<td><input type="button" style="background-color: red" onclick="t().answer('color','red')"></td>
+				</tr>
+			</table>
+			<table class="sublayout" id="mariole_answer_symbol">
+				<tr>
+					<td><img src="games/mariole/assets/hearts.png" width="100" height="100" onclick="t().answer('symbol',2)" /></td>
+					<td><img src="games/mariole/assets/diamonds.png" width="100" height="100" onclick="t().answer('symbol',1)" /></td>
+				</tr><tr>
+					<td><img src="games/mariole/assets/clubs.png" width="100" height="100" onclick="t().answer('symbol',0)" /></td>
+					<td><img src="games/mariole/assets/spades.png" width="100" height="100" onclick="t().answer('symbol',3)" /></td>
+				</tr>
+			</table>
+			<table class="sublayout" id="mariole_answer_value">
+				<tr>
+					<td><input type="button" value="1" onclick="t().answer('value','1')"></td>
+					<td><input type="button" value="2" onclick="t().answer('value','2')"></td>
+					<td><input type="button" value="3" onclick="t().answer('value','3')"></td>
+				</tr>
+				<tr>
+					<td><input type="button" value="4" onclick="t().answer('value','4')"></td>
+					<td><input type="button" value="5" onclick="t().answer('value','5')"></td>
+					<td><input type="button" value="6" onclick="t().answer('value','6')"></td>
+				</tr>
+				<tr>
+					<td><input type="button" value="7" onclick="t().answer('value','7')"></td>
+					<td><input type="button" value="8" onclick="t().answer('value','8')"></td>
+					<td><input type="button" value="9" onclick="t().answer('value','9')"></td>
+				</tr>
+			</table>
+		</td></tr>
+	</table>
+</div><div class="gameScreen" id="runner_game" onMouseDown="t().jump()" onTouchStart="t().jump()" onKeyDown="t().jump()">
+	<table class="layout" id="runner_table">
+	<tr height="75%"><td id="runner_bgtop">
+		<div id="runner_hits">&nbsp;</div>
+		<canvas id="runner_canvas" >Not supported !</canvas>
+	</td></tr>
+	<tr><td id="runner_bgbottom">
+		<input type="button" id="runner_button" value="Sauter" />
+	</td></tr>
+	</table>
+</div>
+<div class="gameScreen" id="colors_game">
+	<table class="layout">
+		<tr>
+			<td width="40%"><canvas id="colors_model"></canvas><img id="colors_loupe1" src=""></td>
+			<td width="40%"><canvas id="colors_stack"></canvas><img id="colors_loupe2" src=""></td>
+			<td width="20%">
+				<p>Modèle</p>
+				<div id="colors_round">0</div>
+				<p>Correspondance</p>
+				<div id="colors_prc">0%</div>
+				<button id="colors_help_button">Indice</button>
+				<button id="colors_pass_button">Passer</button>
+			</td>
+		</tr>
+		<tr><td id="colors_available" colspan="3"></td></tr>
+	</table>
+</div></div>
+
+
+<div id="followup" class="screen">
+	<table class="layout">
+	<tr><td id="followup_graph"></td></tr>
+	<tr height="1"><td><input type="button" value="Retour" onClick="Memo.show('home')" /></td></tr>
+	</table>
+</div>
+
+<!--
+<div id="notification" onClick="Memo.showNotificationsPage()"></div>
+-->
+
+<div id="informations" class="screen scrollable">
+	<table class="layout">
+	<tr><td><h1>Informations</h1></td></tr>
+	<tr><td><dl id="notificationsList" class="textblock alignleft"></dl></td></tr>
+	<tr><td><dl id="informationsText" class="textblock alignleft"></dl></td></tr>
+	<tr><td><input type="button" value="Envoyer un message à l'administrateur" onClick="Memo.sendMessage()" />
+	<tr><td><input type="button" value="Retour" onClick="Memo.back()" /></td></tr>
+	</table>
+</div>
+
+
+<div id="noLocalStorage" class="screen scrollable">
+	<table class="layout">
+	<tr><td><h1>Erreur de stockage</h1></td></tr>
+	<tr><td><div id="noLocalStorage.text" class="textblock alignleft"></div></td></tr>
+	<tr><td><input type="button" value="Retour" onClick="Memo.back()" /></td></tr>
+	</table>
+</div>
+
+
+<!-- loading third party -->
+<script src="assets/highcharts-custom.js"></script>
+<script src="assets/alertify.js"></script>
+<script src="assets/nouislider.min.js"></script>
+
+</body>
+</html>
