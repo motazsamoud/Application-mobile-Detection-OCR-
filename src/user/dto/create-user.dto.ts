@@ -28,8 +28,8 @@ export class CreateUserDto {
   @IsDateString({}, { message: 'Birthdate must be a valid date in ISO 8601 format' })
   @IsNotEmpty({ message: 'Birthdate is required' })
   dateOfBirth: string;
- 
+
   @IsEnum(Role, { message: 'Invalid role selected' })
   @IsNotEmpty({ message: 'Role is required' })
-  role: Role; 
+  role: Role;
 }

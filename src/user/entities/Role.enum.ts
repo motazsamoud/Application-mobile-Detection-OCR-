@@ -1,7 +1,7 @@
 // role.enum.ts
 export enum Role {
-    doctor = 'doctor',
+    admin = 'admin',
     user = 'user',
-    parent = 'parent'
-  }
+
+}
   

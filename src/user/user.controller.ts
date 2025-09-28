@@ -1,16 +1,44 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete , BadRequestException , Req , UseGuards, HttpException, HttpStatus} from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  BadRequestException,
+  Req,
+  UseGuards,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginDto } from './dto/login.dto';
 import { JwtAuthGuard } from './jwt-auth/jwt-auth.guard';
+import { User } from './entities/user.entity';
+import { Request } from 'express';
+import { Types } from 'mongoose';
 
 @Controller('user')
 export class UserController {
+
   constructor(private readonly userService: UserService) {}
+  @Get('get')
+  async findAllUsers() {
+    return this.userService.findAllUsers();
+  }
 
   @Post('signup')
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
+  }
+
+  @Get('find-by-email/:email')
+  async findByEmail(@Param('email') email: string) {
+    const user = await this.userService.findByEmaill(email);
+    if (!user) throw new NotFoundException('User not found');
+    return user;
   }
 
   @Post('login')
@@ -18,6 +46,13 @@ export class UserController {
     return this.userService.login(loginDto);
   }
 
+
+
+  // ⚠️ À garder EN DERNIER
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return this.userService.findOne(id);
+  }
   @Post('send-otp')
   async sendOtp(@Body('email') email: string) {
     await this.userService.sendOtpToUser(email);
@@ -25,23 +60,18 @@ export class UserController {
   }
 
   @Post('verify-otp')
-async verifyOtp(@Body() body: { identifier: string; otp: string }) {
-    const result = await this.userService.verifyOtp(body.identifier, body.otp);
-    
-    if (!result.success) {
-        throw new BadRequestException(result.message);
-    }
-
+  async verifyOtp(@Body() body: { identifier: string; otp: string; sendTemporaryPassword?: boolean }) {
+    const { identifier, otp, sendTemporaryPassword = false } = body;
+    const result = await this.userService.verifyOtp(identifier, otp, sendTemporaryPassword);
+    if (!result.success) throw new BadRequestException(result.message);
     return { message: result.message };
-}
+  }
 
-@UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Post('logout')
   async logout(@Req() req: Request) {
-    const token = req.headers['authorization']?.split(' ')[1]; // Correctly access authorization
-    if (!token) {
-      throw new BadRequestException('Token is required');
-    }
+    const token = req.headers['authorization']?.split(' ')[1];
+    if (!token) throw new BadRequestException('Token is required');
     await this.userService.logout(token);
     return { message: 'Logged out successfully' };
   }
@@ -52,30 +82,12 @@ async verifyOtp(@Body() body: { identifier: string; otp: string }) {
     return { message: 'OTP resent successfully' };
   }
 
-  @Get('get')
-  findAll() {
-    return this.userService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(id);
-  }
-  
 
   @Patch('update')
   update(@Body('id') id: string, @Body() updateUserDto: any) {
-      console.log('[Update Controller] Received ID:', id);
-      console.log('[Update Controller] Received Data:', updateUserDto);
-      if (!id) {
-        throw new BadRequestException('ID is required');
-    }
-
-      
-      return this.userService.update(id, updateUserDto);
+    if (!id) throw new BadRequestException('ID is required');
+    return this.userService.update(id, updateUserDto);
   }
-  
-  
 
   @Delete(':id')
   remove(@Param('id') id: string) {
@@ -83,37 +95,56 @@ async verifyOtp(@Body() body: { identifier: string; otp: string }) {
   }
 
   @Post('status')
-async checkStatus(@Body('identifier') identifier: string) {
-  return this.userService.checkStatus(identifier);
-}
-
-
-
-@Post('forget-password')
-async forgetPassword(@Body('email') email: string): Promise<{ message: string }> {
-    await this.userService.forgetPassword(email);
-    return { message: 'Password has been sent to your email.' };
-}
-
-
-
-  @Patch('update-password')
-  async updatePassword(
-    @Body('id') id: string,
-    @Body('password') password: string,
-  ) {
-    console.log('[UserController] Received update-password request.');
-    console.log('[UserController] User ID:', id);
-    console.log('[UserController] New Password:', password);
-
-    if (!id || !password) {
-      console.log('[UserController] Missing required fields.');
-      throw new BadRequestException('User ID and Password are required.');
-    }
-
-    return this.userService.updatePassword(id, password);
+  async checkStatus(@Body('identifier') identifier: string) {
+    return this.userService.checkStatus(identifier);
   }
 
+  @Post('forget-password')
+  async forgetPassword(@Body('email') email: string) {
+    await this.userService.forgetPassword(email);
+    return { message: '✅ Temporary password sent to email.' };
+  }
+
+  @Post('verify-temp-password')
+  async verifyTempPassword(@Body('email') email: string, @Body('tempPassword') tempPassword: string) {
+    const isValid = await this.userService.verifyTempPassword(email, tempPassword);
+    if (!isValid) throw new BadRequestException('Invalid temporary password');
+    return { success: true, message: 'Temporary password is valid.' };
+  }
+
+  // Remplace l'endpoint actuel update-password par :
+
+  @Patch('update-password')
+  async updatePassword(@Body('id') idOrEmail: string, @Body('password') password: string) {
+    if (!idOrEmail || !password) {
+      throw new BadRequestException('User ID/Email and Password are required.');
+    }
+    return this.userService.updatePassword(idOrEmail, password);
+  }
+
+
+  @Post('verify-diploma')
+  async verifyDiploma(@Body() body: { imageBase64: string; lang: string }) {
+    return this.userService.verifyDiploma(body.imageBase64, body.lang);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  @Post(':id')
+  async findById(@Param('id') id: string): Promise<User> {
+    return this.userService.findByIdOrThrow(id);
+  }
 
 
 }

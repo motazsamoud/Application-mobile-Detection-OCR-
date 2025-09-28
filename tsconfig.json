@@ -1,5 +1,6 @@
 {
-  "compilerOptions": {
+  "compilerOptions":
+   {
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
@@ -19,8 +20,11 @@
     "noFallthroughCasesInSwitch": false,
     "moduleResolution": "node",
   "esModuleInterop": true,
+  "strictPropertyInitialization": false,
   "paths": {
-    "*": ["node_modules/*"]
+    "*": ["node_modules/*"],
+    "src/*": ["./src/*"]
+
   }
   }
 }
